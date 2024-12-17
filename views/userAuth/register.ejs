@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+
+    <div style="min-height: 60vh" class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card text-bg-light border-secondary p-4" style="width: 22rem;">
+                    <h1 class="card-title text-center p-2">Sign Up</h1>
+                    <div class="car-body my-3">
+
+                        <form action="/user/register" method="POST">
+
+                            <div class="mb-3">
+                                <label class="form-label" for="userName">Username: </label>
+                                <input class="form-control" type="text" name="username" id="userName"
+                                    placeholder=" --- Enter Username --- ">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password: </label>
+                                <input class="form-control" type="password" name="password" id="password"
+                                    placeholder=" --- create password --- ">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email: </label>
+                                <input class="form-control" type="email" name="email" id="email"
+                                    placeholder=" --- Enter e-mail --- ">
+                            </div>
+
+
+                            <button class="btn btn-dark mx-auto d-block mt-5"
+                                style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1.2rem;">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
