@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container  d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class=" col-xl-6">
+                <div class="card bg-info-subtle text-info-emphasis p-2" style="width: 32rem;">
+                    <div class="card-body">
+                        <h2 class="card-title text-center pb-3">BLOG</h2>
+
+                        <form action="/user/<%= user._id  %>/newblog" method="POST">
+                            <textarea class=" fs-5 card-text bg-info-subtle text-info-emphasis"
+                                placeholder="Type your thoughts here..." name="content"
+                                style="height: 100px; width: 450px; border: none; outline: none;"></textarea>
+
+                            <div class=" d-flex align-items-center justify-content-end my-4">
+
+                                <a class="btn btn-outline-danger me-3" role="button" aria-disabled="true"
+                                    href="/user/secret">cancel</a>
+
+
+                                <button class="btn btn-outline-primary">POST</button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

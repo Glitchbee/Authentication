@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+
+    <h1 class="text-center py-4 my-2">List of Blogs</h1>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-xl-6">
+
+
+                <% news.forEach(post => { %>
+
+                    <% post.blog.forEach(posts => { %>
+
+                        <div class="card  text-bg-light border-secondary my-4" style="width: 36rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Post by <%= posts.author.username  %></h5>
+
+                                <p class="card-text my-3"><%= posts.content %></p>
+
+                                <% if(user && posts.author.equals(user._id)) {%>
+
+                                <form action="/user/<%= user._id %>/blog/<%= posts._id %>?_method=DELETE" method="POST">
+
+                                    <button class="btn d-block btn-outline-danger ms-auto">Delete</button>
+
+                                </form>
+                                <% } %>
+
+                            </div>
+                        </div>
+
+                    <% }) %>
+                    
+                <% }) %>
+
+            </div>
+        </div>
+    </div>
