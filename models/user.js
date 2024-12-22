@@ -8,7 +8,7 @@ const userSchema = new Schema({
         unique: true
     },
 
-    addlInfo: [{ type: Schema.Types.ObjectId, ref: 'Info' }]
+    addlInfo: [{ type: Schema.Types.ObjectId, ref: 'Info' }],
 
 })
 
@@ -17,7 +17,7 @@ const infoSchema = new Schema({
     education: {
         type: String,
         required: true,
-        enum: ['Btech','Mtech', 'Barc', 'MBBS', 'Bsc', 'BBA']
+        enum: ['Btech', 'Mtech', 'Barc', 'MBBS', 'Bsc', 'BBA']
     },
     hobbies: {
         type: [String],

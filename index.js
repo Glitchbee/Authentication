@@ -9,7 +9,10 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('passport-local');
 const userRoutes = require('./routes/user');
+const blogRoutes = require('./routes/blog');
+const newsRoutes = require('./routes/news');
 const { User } = require('./models/user');
+const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://127.0.0.1:27017/AuthenticationDB')
     .then(() => {
@@ -47,9 +50,12 @@ app.use((req, res, next) => {
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 
 app.use('/user', userRoutes);
+app.use('/user', blogRoutes);
+app.use('/user', newsRoutes);
 
 
 app.all('*', (req, res) => {

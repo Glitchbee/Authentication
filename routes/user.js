@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { logics } = require('../controller/user');
+const { blogLogic } = require('../controller/blog');
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
 const { isLoggedIn } = require('../middleware');
@@ -8,7 +9,8 @@ const { isLoggedIn } = require('../middleware');
 // Demo
 // router.get('/demoauth', logics.demoHash);
 
-router.get('/secret', isLoggedIn, logics.info);
+router.route('/secret')
+    .get(isLoggedIn, logics.info);
 
 router.route('/register')
     .get(logics.renderRegister)
@@ -27,5 +29,10 @@ router.route('/logout')
 router.route('/:id/moreinfo')
     .get(isLoggedIn, catchAsync(logics.renderMoreInfo))
     .post(catchAsync(logics.addMoreUserInfo));
+
+
+
+// router.route('/:id/newblog')
+//     .get(isLoggedIn, logics.renderBlog)
 
 module.exports = router;

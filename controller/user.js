@@ -1,4 +1,5 @@
 const { User, Info } = require('../models/user');
+const { News } = require('../models/news');
 
 module.exports.logics = {
     // demoHash: async (req, res) => {
@@ -9,7 +10,7 @@ module.exports.logics = {
     info: async (req, res) => {
         const { _id } = req.user;
         const user = await User.findById(_id).populate('addlInfo');
-        res.render('info', { user });
+        res.render('userInfo/info', { user });
     },
 
     renderRegister: (req, res) => {
@@ -22,7 +23,8 @@ module.exports.logics = {
             const { username, password, email } = req.body;
             const user = new User({ username, email });
             const regUser = await User.register(user, password);
-
+            const newEntry = new News({ author: regUser._id });
+            await newEntry.save();
             req.login(regUser, (err) => {
                 if (err) return next(err);
 
@@ -61,7 +63,7 @@ module.exports.logics = {
     renderMoreInfo: async (req, res) => {
         const { _id } = req.user;
         const user = await User.findById(_id);
-        res.render('moreinfo', { user });
+        res.render('userInfo/moreinfo', { user });
     },
 
     addMoreUserInfo: async (req, res) => {
@@ -79,5 +81,7 @@ module.exports.logics = {
         req.flash('success', 'Successfully added additional information :):):)');
         res.redirect('/user/secret')
 
-    }
+    },
+
+
 }
